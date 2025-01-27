@@ -118,6 +118,7 @@
         .input-container {
             display: flex;
             align-items: center;
+            
         }
 
         .input-container input {
@@ -132,12 +133,39 @@
         .input-container input {
             color: inherit;
         }
+        
+        /* Style for the "Total Deposit Till Now" input */
+  #total-deposit {
+    color: blue; /* Text color */
+    background-color: #f0f8ff; /* Background color */
+    border: 0px solid blue; /* Border color */
+  }
+
+  /* Style for the "Loan Amount Taken" input */
+  #loan-amount {
+    color: red; /* Text color */
+    background-color: #f9fff9; /* Background color */
+    border: 1px solid green; /* Border color */
+  }
 
         /* Added for the "Total GMS Kosh Deposited Amount" field */
         .fixed-input {
-            font-weight: bold;
-            border: 1px solid black;
-            width: 50%;
+              font-weight: bold;
+              color: #448EE4;
+              border: 1px solid black;
+              padding: 5px;
+              font-size: 16px; /* Ensure consistency with other fields */
+              width: 20%; /* Match other input fields */
+              background-color: #f7f7f7; /* Match the style of other input fields */
+              border-radius: 4px; /* Ensure consistent rounding */
+        }
+
+        
+           .note {
+              font-size: 7px;
+              color: #666;
+              margin-right: 7px;
+              font-style: italic;
         }
     </style>
 </head>
@@ -172,27 +200,31 @@
         <hr />
 
         <p class="blue-label"><strong>Total Deposit Till Now:</strong>
-            <span class="currency">Rs.</span>
+           <!--  <span class="currency">Rs.</span> -->
             <input type="text" id="totalDeposit" readonly />
         </p>
         <hr />
 
         <p class="red-label"><strong>Loan Amount Taken:</strong>
-            <span class="currency">Rs.</span>
+             <!--  <span class="currency">Rs.</span> -->
             <input type="text" id="loanAmount" readonly />
         </p>
         <p><strong>Loan Installment Paid:</strong>
-            <span class="currency">Rs.</span>
+           <!--  <span class="currency">Rs.</span> -->
             <input type="text" id="loanInstallment" readonly />
         </p>
         <p><strong>Loan Interest Paid:</strong>
-            <span class="currency">Rs.</span>
+            <!--  <span class="currency">Rs.</span> -->
             <input type="text" id="loanInterest" readonly />
         </p>
         <hr />
         <p><strong>Total GMS Kosh Deposited Amount:</strong></p>
         <input type="text" id="totalGmsKoshAmount" readonly class="fixed-input" />
-      
+         <span class="note">(refer to bank statement for exact amount)</span>   
+         
+       
+
+
     </div>
 
     <script>
@@ -205,31 +237,31 @@
                 email: 'anilmaharjan@live.com',
                 dob: '11-30-1990',
                 joinedDate: '2079 Bhadra',
-                totalDeposit: '31000',
-                loanAmount: '100000',
-                loanInstallment: '32000',
-                loanInterest: '4000'
+                totalDeposit: 'Rs. 31000',
+                loanAmount: 'Rs. 100000',
+                loanInstallment: 'Rs. 32000',
+                loanInterest: 'Rs. 4000'
             },
             'Sajina Barahi': {
                 name: 'Sajina Barahi',
                 address: 'Lalitpur, Nepal',
                 contact: '9849195978',
                 email: 'N/A',
-                dob: '15-05-1992',
+                dob: 'N/A',
                 joinedDate: '2079 Bhadra',
-                totalDeposit: '31000',
-                loanAmount: '50000',
-                loanInstallment: '34000',
-                loanInterest: '2000'
+                totalDeposit: 'Rs. 31000',
+                loanAmount: 'Rs. 50000',
+                loanInstallment: 'Rs. 34000',
+                loanInterest: 'Rs. 2000'
             },
             'Bindu Maharjan': {
                 name: 'Bindu Maharjan',
                 address: 'Lalitpur, Nepal',
-                contact: '9876543212',
-                email: 'bindu@example.com',
-                dob: '20-08-1991',
+                contact: '9851236868',
+                email: 'N/A',
+                dob: 'N/A',
                 joinedDate: '2079 Bhadra',
-                totalDeposit: '31200',
+                totalDeposit: 'Rs. 31200',
                 loanAmount: 'N/A',
                 loanInstallment: 'N/A',
                 loanInterest: 'N/A'
@@ -237,11 +269,11 @@
             'Manisha Maharjan': {
                 name: 'Manisha Maharjan',
                 address: 'Lalitpur, Nepal',
-                contact: '9876543213',
-                email: 'manisha@example.com',
-                dob: '12-12-1995',
+                contact: 'N/A',
+                email: 'manishamaharjan605@gmail.com',
+                dob: 'N/A',
                 joinedDate: '2079 Bhadra',
-                totalDeposit: '31000',
+                totalDeposit: 'Rs. 31000',
                 loanAmount: 'N/A',
                 loanInstallment: 'N/A',
                 loanInterest: 'N/A'
@@ -249,11 +281,11 @@
             'Rajeev Maharjan': {
                 name: 'Rajeev Maharjan',
                 address: 'Pinchhen, Lalitpur',
-                contact: '9876543214',
-                email: 'rajeeve@example.com',
-                dob: '28-02-1993',
+                contact: '9840099332',
+                email: 'rajeepmaharjan2@gmail.com',
+                dob: 'N/A',
                 joinedDate: '2079 Bhadra',
-                totalDeposit: '31450',
+                totalDeposit: 'Rs. 31450',
                 loanAmount: 'N/A',
                 loanInstallment: 'N/A',
                 loanInterest: 'N/A'
@@ -261,11 +293,11 @@
             'Supreme Chitrakar': {
                 name: 'Supreme Chitrakar',
                 address: 'Lalitpur, Nepal',
-                contact: '9876543215',
+                contact: '9801193758',
                 email: 'supreme.ctk@gmail.com',
-                dob: '25-11-1989',
+                dob: 'N/A',
                 joinedDate: '2079 Bhadra',
-                totalDeposit: '31100',
+                totalDeposit: 'Rs. 31100',
                 loanAmount: 'N/A',
                 loanInstallment: 'N/A',
                 loanInterest: 'N/A'
@@ -273,7 +305,7 @@
         };
 
         // Set Total GMS Kosh Deposited Amount for all members to the same value
-        const fixedGmsAmount = '115050'; // Set the fixed amount for GMS Kosh Deposited
+        const fixedGmsAmount = 'Rs. 115050'; // Set the fixed amount for GMS Kosh Deposited
         function setTotalGmsKoshAmount() {
             const gmsInput = document.getElementById('totalGmsKoshAmount');
             gmsInput.value = fixedGmsAmount; // Set the same value for all members
