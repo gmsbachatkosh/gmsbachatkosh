@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            flex-direction: column;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .gms-container {
+            font-size: 48px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gms {
+            color: white;
+            text-shadow: 1px 1px 2px black;
+            margin-right: 5px;
+        }
+
+        .bachat {
+            color: orange;
+            text-shadow: 1px 1px 2px black;
+            margin-right: 5px;
+        }
+
+        .kosh {
+            color: yellow;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .dropdown {
+            padding: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            width: 250px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            display: none;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .card p {
+            margin: 8px 0;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card input {
+            padding: 6px;
+            width: 45%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f7f7f7;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid black;
+            margin: 15px 0;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .blue-label {
+            color: blue;
+        }
+
+        .red-label {
+            color: red;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-container input {
+            text-align: right;
+        }
+
+        .input-container .currency {
+            color: inherit;
+            margin-right: 5px;
+        }
+
+        .input-container input {
+            color: inherit;
+        }
+
+        /* Added for the "Total GMS Kosh Deposited Amount" field */
+        .fixed-input {
+            font-weight: bold;
+            border: 1px solid black;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gms-container">
+        <div class="gms">GMS</div>
+        <div class="bachat">Bachat</div>
+        <div class="kosh">Kosh</div>
+    </div>
+
+    <h2>Select Member to View Details</h2>
+
+    <select id="memberSelect" class="dropdown" onchange="displayMember()">
+        <option value="">-- Select Member --</option>
+        <option value="Anil Maharjan">Anil Maharjan</option>
+        <option value="Sajina Barahi">Sajina Barahi</option>
+        <option value="Bindu Maharjan">Bindu Maharjan</option>
+        <option value="Manisha Maharjan">Manisha Maharjan</option>
+        <option value="Rajeev Maharjan">Rajeev Maharjan</option>
+        <option value="Supreme Chitrakar">Supreme Chitrakar</option>
+    </select>
+
+    <div class="card" id="memberDetails">
+        <h3>Member Details</h3>
+        <p><strong>Name:</strong> <span id="name"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
+        <p><strong>Contact:</strong> <span id="contact"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+        <p><strong>DOB:</strong> <span id="dob"></span></p>
+        <p><strong>Kosh Joined Date:</strong> <span id="joinedDate"></span></p>
+        <hr />
+
+        <p class="blue-label"><strong>Total Deposit Till Now:</strong>
+            <span class="currency">Rs.</span>
+            <input type="text" id="totalDeposit" readonly />
+        </p>
+        <hr />
+
+        <p class="red-label"><strong>Loan Amount Taken:</strong>
+            <span class="currency">Rs.</span>
+            <input type="text" id="loanAmount" readonly />
+        </p>
+        <p><strong>Loan Installment Paid:</strong>
+            <span class="currency">Rs.</span>
+            <input type="text" id="loanInstallment" readonly />
+        </p>
+        <p><strong>Loan Interest Paid:</strong>
+            <span class="currency">Rs.</span>
+            <input type="text" id="loanInterest" readonly />
+        </p>
+        <hr />
+        <p><strong>Total GMS Kosh Deposited Amount:</strong></p>
+        <input type="text" id="totalGmsKoshAmount" readonly class="fixed-input" />
+      
+    </div>
+
+    <script>
+        // Member information
+        const memberInfo = {
+            'Anil Maharjan': {
+                name: 'Anil Maharjan',
+                address: 'Kathmandu, Nepal',
+                contact: '9876543210',
+                email: 'anil@example.com',
+                dob: '01-01-1990',
+                joinedDate: '01-01-2020',
+                totalDeposit: '50000',
+                loanAmount: '200000',
+                loanInstallment: '5000',
+                loanInterest: '1000'
+            },
+            'Sajina Barahi': {
+                name: 'Sajina Barahi',
+                address: 'Lalitpur, Nepal',
+                contact: '9876543211',
+                email: 'sajina@example.com',
+                dob: '15-05-1992',
+                joinedDate: '10-03-2021',
+                totalDeposit: '30000',
+                loanAmount: '150000',
+                loanInstallment: '4000',
+                loanInterest: '800'
+            },
+            'Bindu Maharjan': {
+                name: 'Bindu Maharjan',
+                address: 'Pokhara, Nepal',
+                contact: '9876543212',
+                email: 'bindu@example.com',
+                dob: '20-08-1991',
+                joinedDate: '22-06-2022',
+                totalDeposit: '45000',
+                loanAmount: '250000',
+                loanInstallment: '6000',
+                loanInterest: '1200'
+            },
+            'Manisha Maharjan': {
+                name: 'Manisha Maharjan',
+                address: 'Bhaktapur, Nepal',
+                contact: '9876543213',
+                email: 'manisha@example.com',
+                dob: '12-12-1995',
+                joinedDate: '05-07-2023',
+                totalDeposit: '25000',
+                loanAmount: '100000',
+                loanInstallment: '3000',
+                loanInterest: '600'
+            },
+            'Rajeev Maharjan': {
+                name: 'Rajeev Maharjan',
+                address: 'Chitwan, Nepal',
+                contact: '9876543214',
+                email: 'rajeeve@example.com',
+                dob: '28-02-1993',
+                joinedDate: '14-04-2019',
+                totalDeposit: '70000',
+                loanAmount: '350000',
+                loanInstallment: '8000',
+                loanInterest: '1500'
+            },
+            'Supreme Chitrakar': {
+                name: 'Supreme Chitrakar',
+                address: 'Biratnagar, Nepal',
+                contact: '9876543215',
+                email: 'supreme@example.com',
+                dob: '25-11-1989',
+                joinedDate: '18-09-2018',
+                totalDeposit: '60000',
+                loanAmount: '300000',
+                loanInstallment: '7000',
+                loanInterest: '1300'
+            }
+        };
+
+        // Set Total GMS Kosh Deposited Amount for all members to the same value
+        const fixedGmsAmount = '180000'; // Set the fixed amount for GMS Kosh Deposited
+        function setTotalGmsKoshAmount() {
+            const gmsInput = document.getElementById('totalGmsKoshAmount');
+            gmsInput.value = fixedGmsAmount; // Set the same value for all members
+        }
+
+        // Display member details based on selection
+        function displayMember() {
+            const memberSelect = document.getElementById('memberSelect');
+            const memberName = memberSelect.value;
+            const memberDetails = document.getElementById('memberDetails');
+            
+            if (memberName) {
+                const member = memberInfo[memberName];
+
+                // Update member-specific details
+                document.getElementById('name').innerText = member.name;
+                document.getElementById('address').innerText = member.address;
+                document.getElementById('contact').innerText = member.contact;
+                document.getElementById('email').innerText = member.email;
+                document.getElementById('dob').innerText = member.dob;
+                document.getElementById('joinedDate').innerText = member.joinedDate;
+                document.getElementById('totalDeposit').value = member.totalDeposit;
+                document.getElementById('loanAmount').value = member.loanAmount;
+                document.getElementById('loanInstallment').value = member.loanInstallment;
+                document.getElementById('loanInterest').value = member.loanInterest;
+
+                // Set Total GMS Kosh Deposited Amount for all members
+                setTotalGmsKoshAmount();
+
+                // Show the member details section
+                memberDetails.style.display = 'block';
+            } else {
+                // Hide the member details section if no member is selected
+                memberDetails.style.display = 'none';
+            }
+        }
+
+        // Call this function when the page loads or when you want to set the value
+        setTotalGmsKoshAmount();
+    </script>
+
+</body>
+</html>
