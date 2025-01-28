@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Details</title>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -119,7 +120,6 @@
         .input-container {
             display: flex;
             align-items: center;
-            
         }
 
         .input-container input {
@@ -134,44 +134,130 @@
         .input-container input {
             color: inherit;
         }
-        
-        /* Style for the "Total Deposit Till Now" input */
-  #totalDeposit {
-    color: blue; /* Text color */
-    background-color: #f7f7f7; /* Background color */
-    border: 0.5px solid black; /* Border color */
-  }
 
-  /* Style for the "Loan Amount Taken" input */
-  #loanAmount {
-    color: red; /* Text color */
-    background-color: #f7f7f7; /* Background color */
-    border: 0.5px solid black; /* Border color */
-  }
+        /* Style for the "Total Deposit Till Now" input */
+        #totalDeposit {
+            color: blue;
+            background-color: #e6f0ff;
+            border: 1px solid blue;
+        }
+
+        /* Style for the "Loan Amount Taken" input */
+        #loanAmount {
+            color: red;
+            background-color: #ffe6e6;
+            border: 1px solid red;
+        }
 
         /* Added for the "Total GMS Kosh Deposited Amount" field */
         .fixed-input {
-              font-weight: bold;
-              color: #448EE4;
-              border: 1px solid black;
-              padding: 5px;
-              font-size: 16px; /* Ensure consistency with other fields */
-              width: 20%; /* Match other input fields */
-              background-color: #f7f7f7; /* Match the style of other input fields */
-              border-radius: 4px; /* Ensure consistent rounding */
+            font-weight: bold;
+            color: #448EE4;
+            border: 1px solid black;
+            padding: 5px;
+            font-size: 16px;
+            width: 20%;
+            background-color: #f7f7f7;
+            border-radius: 4px;
         }
 
-        
-           .note {
-              font-size: 7px;
-              color: #666;
-              margin-right: 7px;
-              font-style: italic;
+        .note {
+            font-size: 7px;
+            color: #666;
+            margin-right: 7px;
+            font-style: italic;
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .popup p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .popup button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Overlay for popup */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .card {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .card h3 {
+                font-size: 20px;
+            }
+
+            .card p {
+                font-size: 14px;
+            }
+
+            .dropdown {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Popup Card -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h3>Welcome to GMS Bachat Kosh!</h3>
+        <p>Please select a member from the dropdown to view their details.</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+
+    <!-- Existing Content -->
     <div class="gms-container">
         <div class="gms">GMS</div>
         <div class="bachat">Bachat</div>
@@ -192,7 +278,7 @@
 
     <div class="card" id="memberDetails">
         <h3>Member Details</h3>
-<hr/>
+        <hr />
         <p><strong>Name:</strong> <span id="name"></span></p>
         <p><strong>Address:</strong> <span id="address"></span></p>
         <p><strong>Contact:</strong> <span id="contact"></span></p>
@@ -202,34 +288,43 @@
         <hr />
 
         <p class="blue-label"><strong>Total Deposit Till Now:</strong>
-           <!--  <span class="currency">Rs.</span> -->
             <input type="text" id="totalDeposit" readonly />
         </p>
         <hr />
 
         <p class="red-label"><strong>Loan Amount:</strong>
-             <!--  <span class="currency">Rs.</span> -->
             <input type="text" id="loanAmount" readonly />
         </p>
         <p><strong>Loan Installment Paid:</strong>
-           <!--  <span class="currency">Rs.</span> -->
             <input type="text" id="loanInstallment" readonly />
         </p>
         <p><strong>Loan Interest Paid:</strong>
-            <!--  <span class="currency">Rs.</span> -->
             <input type="text" id="loanInterest" readonly />
         </p>
         <hr />
         <p><strong>Total GMS Kosh Deposited Amount:</strong></p>
         <input type="text" id="totalGmsKoshAmount" readonly class="fixed-input" />
-         <span class="note">(refer to bank statement for exact amount)</span>   
-         
-       
-
-
+        <span class="note">(refer to bank statement for exact amount)</span>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <p class="note">&copy; 2023 GMS Bachat Kosh. All rights reserved.</p>
+    </footer>
+
     <script>
+        // Show popup on page load
+        window.onload = function () {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        };
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
         // Member information
         const memberInfo = {
             'Anil Maharjan': {
@@ -307,10 +402,10 @@
         };
 
         // Set Total GMS Kosh Deposited Amount for all members to the same value
-        const fixedGmsAmount = 'Rs. 115050'; // Set the fixed amount for GMS Kosh Deposited
+        const fixedGmsAmount = 'Rs. 115050';
         function setTotalGmsKoshAmount() {
             const gmsInput = document.getElementById('totalGmsKoshAmount');
-            gmsInput.value = fixedGmsAmount; // Set the same value for all members
+            gmsInput.value = fixedGmsAmount;
         }
 
         // Display member details based on selection
@@ -348,6 +443,5 @@
         // Call this function when the page loads or when you want to set the value
         setTotalGmsKoshAmount();
     </script>
-
 </body>
 </html>
