@@ -84,6 +84,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s ease; /* Smooth transition for hiding/showing */
         }
 
         .card input {
@@ -152,12 +153,12 @@
         /* Added for the "Total GMS Kosh Deposited Amount" field */
         .fixed-input {
             font-weight: bold;
-            color: #448EE4;
-            border: 1px solid black;
+            color: #448EE4; /* Text color */
+            border: 1px solid #448EE4; /* Border color matching the text */
             padding: 5px;
             font-size: 16px;
             width: 20%;
-            background-color: #f7f7f7;
+            background-color: #e6f0ff; /* Light blue background to match the theme */
             border-radius: 4px;
         }
 
@@ -316,7 +317,6 @@
         <p><strong>Loan Interest Paid:</strong>
             <input type="text" id="loanInterest" readonly />
         </p>
-         <hr />
         <p><strong>Loan Taken Date:</strong>
             <input type="text" id="loanTakenDate" readonly />
         </p>
@@ -459,11 +459,49 @@
                 document.getElementById('dob').innerText = member.dob;
                 document.getElementById('joinedDate').innerText = member.joinedDate;
                 document.getElementById('totalDeposit').value = member.totalDeposit;
-                document.getElementById('loanAmount').value = member.loanAmount;
-                document.getElementById('loanInstallment').value = member.loanInstallment;
-                document.getElementById('loanInterest').value = member.loanInterest;
-                document.getElementById('loanTakenDate').value = member.loanTakenDate || 'N/A';
-                document.getElementById('loanMaturityDate').value = member.loanMaturityDate || 'N/A';
+
+                // Loan-related fields
+                const loanAmount = document.getElementById('loanAmount');
+                const loanInstallment = document.getElementById('loanInstallment');
+                const loanInterest = document.getElementById('loanInterest');
+                const loanTakenDate = document.getElementById('loanTakenDate');
+                const loanMaturityDate = document.getElementById('loanMaturityDate');
+
+                // Check if loan-related fields are N/A and hide them
+                if (member.loanAmount === 'N/A') {
+                    loanAmount.parentElement.style.display = 'none'; // Hide the <p> element
+                } else {
+                    loanAmount.value = member.loanAmount;
+                    loanAmount.parentElement.style.display = 'flex'; // Show the <p> element
+                }
+
+                if (member.loanInstallment === 'N/A') {
+                    loanInstallment.parentElement.style.display = 'none';
+                } else {
+                    loanInstallment.value = member.loanInstallment;
+                    loanInstallment.parentElement.style.display = 'flex';
+                }
+
+                if (member.loanInterest === 'N/A') {
+                    loanInterest.parentElement.style.display = 'none';
+                } else {
+                    loanInterest.value = member.loanInterest;
+                    loanInterest.parentElement.style.display = 'flex';
+                }
+
+                if (member.loanTakenDate === 'N/A') {
+                    loanTakenDate.parentElement.style.display = 'none';
+                } else {
+                    loanTakenDate.value = member.loanTakenDate;
+                    loanTakenDate.parentElement.style.display = 'flex';
+                }
+
+                if (member.loanMaturityDate === 'N/A') {
+                    loanMaturityDate.parentElement.style.display = 'none';
+                } else {
+                    loanMaturityDate.value = member.loanMaturityDate;
+                    loanMaturityDate.parentElement.style.display = 'flex';
+                }
 
                 // Set Total GMS Kosh Deposited Amount for all members
                 setTotalGmsKoshAmount();
