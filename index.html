@@ -245,6 +245,19 @@
                 width: 100%;
             }
         }
+
+        /* Custom Styles for Loan Taken Date and Loan Maturity Date */
+        #loanTakenDate {
+            color: purple; /* Text color */
+            background-color: #f3e5f5; /* Light purple background */
+            border: 1px solid purple; /* Purple border */
+        }
+
+        #loanMaturityDate {
+            color: orange; /* Text color */
+            background-color: #fff3e0; /* Light orange background */
+            border: 1px solid orange; /* Orange border */
+        }
     </style>
 </head>
 <body>
@@ -303,6 +316,13 @@
         <p><strong>Loan Interest Paid:</strong>
             <input type="text" id="loanInterest" readonly />
         </p>
+         <hr />
+        <p><strong>Loan Taken Date:</strong>
+            <input type="text" id="loanTakenDate" readonly />
+        </p>
+        <p><strong>Loan Maturity Date:</strong>
+            <input type="text" id="loanMaturityDate" readonly />
+        </p>
         <hr />
         <p><strong>Total GMS Kosh Deposited Amount:</strong></p>
         <input type="text" id="totalGmsKoshAmount" readonly class="fixed-input" />
@@ -339,7 +359,9 @@
                 totalDeposit: 'Rs. 32000',
                 loanAmount: 'Rs. 100000',
                 loanInstallment: 'Rs. 40000',
-                loanInterest: 'Rs. 5000'
+                loanInterest: 'Rs. 5000',
+                loanTakenDate: '9th Bhadra 2081',
+                loanMaturityDate: '9th Bhadra 2082'
             },
             'Sajina Barahi': {
                 name: 'Sajina Barahi',
@@ -351,7 +373,9 @@
                 totalDeposit: 'Rs. 32000',
                 loanAmount: 'Rs. 50000',
                 loanInstallment: 'Rs. 34000',
-                loanInterest: 'Rs. 2000'
+                loanInterest: 'Rs. 2000',
+                loanTakenDate: '17th Bhadra 2081',
+                loanMaturityDate: '17th Falgun 2081'
             },
             'Bindu Maharjan': {
                 name: 'Bindu Maharjan',
@@ -363,7 +387,9 @@
                 totalDeposit: 'Rs. 32200',
                 loanAmount: 'N/A',
                 loanInstallment: 'N/A',
-                loanInterest: 'N/A'
+                loanInterest: 'N/A',
+                loanTakenDate: 'N/A',
+                loanMaturityDate: 'N/A'
             },
             'Manisha Maharjan': {
                 name: 'Manisha Maharjan',
@@ -375,7 +401,9 @@
                 totalDeposit: 'Rs. 32100',
                 loanAmount: 'N/A',
                 loanInstallment: 'N/A',
-                loanInterest: 'N/A'
+                loanInterest: 'N/A',
+                loanTakenDate: 'N/A',
+                loanMaturityDate: 'N/A'
             },
             'Rajeev Maharjan': {
                 name: 'Rajeev Maharjan',
@@ -387,7 +415,9 @@
                 totalDeposit: 'Rs. 32550',
                 loanAmount: 'N/A',
                 loanInstallment: 'N/A',
-                loanInterest: 'N/A'
+                loanInterest: 'N/A',
+                loanTakenDate: 'N/A',
+                loanMaturityDate: 'N/A'
             },
             'Supreme Chitrakar': {
                 name: 'Supreme Chitrakar',
@@ -399,7 +429,9 @@
                 totalDeposit: 'Rs. 32200',
                 loanAmount: 'N/A',
                 loanInstallment: 'N/A',
-                loanInterest: 'N/A'
+                loanInterest: 'N/A',
+                loanTakenDate: 'N/A',
+                loanMaturityDate: 'N/A'
             }
         };
 
@@ -430,6 +462,8 @@
                 document.getElementById('loanAmount').value = member.loanAmount;
                 document.getElementById('loanInstallment').value = member.loanInstallment;
                 document.getElementById('loanInterest').value = member.loanInterest;
+                document.getElementById('loanTakenDate').value = member.loanTakenDate || 'N/A';
+                document.getElementById('loanMaturityDate').value = member.loanMaturityDate || 'N/A';
 
                 // Set Total GMS Kosh Deposited Amount for all members
                 setTotalGmsKoshAmount();
