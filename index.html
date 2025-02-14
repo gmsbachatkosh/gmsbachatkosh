@@ -259,6 +259,13 @@
             background-color: #fff3e0; /* Light orange background */
             border: 1px solid orange; /* Orange border */
         }
+
+        /* Style for Loan Cleared Date */
+        #loanClearedDate {
+            color: purple; /* Text color */
+            background-color: #FFB6C1; /* Pink background */
+            border: 1px solid #ff69b4; /* Border color */
+        }
     </style>
 </head>
 <body>
@@ -323,6 +330,9 @@
         <p><strong>Loan Maturity Date:</strong>
             <input type="text" id="loanMaturityDate" readonly />
         </p>
+        <p><strong>Loan Cleared Date:</strong>
+            <input type="text" id="loanClearedDate" readonly />
+        </p>
         <hr />
         <p><strong>Total GMS Kosh Deposited Amount:</strong></p>
         <input type="text" id="totalGmsKoshAmount" readonly class="fixed-input" />
@@ -361,7 +371,8 @@
                 loanInstallment: 'Rs. 100000',
                 loanInterest: 'Rs. 5000',
                 loanTakenDate: '9th Bhadra 2081',
-                loanMaturityDate: '9th Bhadra 2082'
+                loanMaturityDate: '9th Bhadra 2082',
+                loanClearedDate: '30th Magh 2081' // New field
             },
             'Sajina Barahi': {
                 name: 'Sajina Barahi',
@@ -375,7 +386,8 @@
                 loanInstallment: 'Rs. 42500',
                 loanInterest: 'Rs. 2500',
                 loanTakenDate: '17th Bhadra 2081',
-                loanMaturityDate: '17th Falgun 2081'
+                loanMaturityDate: '17th Falgun 2081',
+                loanClearedDate: 'N/A' // New field
             },
             'Bindu Maharjan': {
                 name: 'Bindu Maharjan',
@@ -389,7 +401,8 @@
                 loanInstallment: 'N/A',
                 loanInterest: 'N/A',
                 loanTakenDate: 'N/A',
-                loanMaturityDate: 'N/A'
+                loanMaturityDate: 'N/A',
+                loanClearedDate: 'N/A' // New field
             },
             'Manisha Maharjan': {
                 name: 'Manisha Maharjan',
@@ -403,7 +416,8 @@
                 loanInstallment: 'N/A',
                 loanInterest: 'N/A',
                 loanTakenDate: 'N/A',
-                loanMaturityDate: 'N/A'
+                loanMaturityDate: 'N/A',
+                loanClearedDate: 'N/A' // New field
             },
             'Rajeev Maharjan': {
                 name: 'Rajeev Maharjan',
@@ -417,7 +431,8 @@
                 loanInstallment: 'N/A',
                 loanInterest: 'N/A',
                 loanTakenDate: 'N/A',
-                loanMaturityDate: 'N/A'
+                loanMaturityDate: 'N/A',
+                loanClearedDate: 'N/A' // New field
             },
             'Supreme Chitrakar': {
                 name: 'Supreme Chitrakar',
@@ -431,7 +446,8 @@
                 loanInstallment: 'N/A',
                 loanInterest: 'N/A',
                 loanTakenDate: 'N/A',
-                loanMaturityDate: 'N/A'
+                loanMaturityDate: 'N/A',
+                loanClearedDate: 'N/A' // New field
             }
         };
 
@@ -466,13 +482,14 @@
                 const loanInterest = document.getElementById('loanInterest');
                 const loanTakenDate = document.getElementById('loanTakenDate');
                 const loanMaturityDate = document.getElementById('loanMaturityDate');
+                const loanClearedDate = document.getElementById('loanClearedDate'); // New field
 
                 // Check if loan-related fields are N/A and hide them
                 if (member.loanAmount === 'N/A') {
-                    loanAmount.parentElement.style.display = 'none'; // Hide the <p> element
+                    loanAmount.parentElement.style.display = 'none';
                 } else {
                     loanAmount.value = member.loanAmount;
-                    loanAmount.parentElement.style.display = 'flex'; // Show the <p> element
+                    loanAmount.parentElement.style.display = 'flex';
                 }
 
                 if (member.loanInstallment === 'N/A') {
@@ -501,6 +518,14 @@
                 } else {
                     loanMaturityDate.value = member.loanMaturityDate;
                     loanMaturityDate.parentElement.style.display = 'flex';
+                }
+
+                // Handle Loan Cleared Date
+                if (member.loanClearedDate === 'N/A') {
+                    loanClearedDate.parentElement.style.display = 'none';
+                } else {
+                    loanClearedDate.value = member.loanClearedDate;
+                    loanClearedDate.parentElement.style.display = 'flex';
                 }
 
                 // Set Total GMS Kosh Deposited Amount for all members
