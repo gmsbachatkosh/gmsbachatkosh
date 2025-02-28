@@ -266,6 +266,39 @@
             background-color: #FFB6C1; /* Pink background */
             border: 1px solid #ff69b4; /* Border color */
         }
+        
+        /* Add this to your existing CSS */
+        #bankName {
+            color: blue; /* Blue text color */
+            font-weight: bold; /* Bold text */
+        }
+        
+        #bankAccountNumber {
+            color: purple; /* Orange text color */
+            font-weight: bold; /* Bold text */
+        }
+        
+        #accountName {
+            color: green; /* Green text color */
+            font-weight: bold; /* Bold text */
+        }
+        
+             #bankName,
+#bankAccountNumber,
+#accountName {
+    padding: 6px;
+    width: 52%; /* Adjust width as needed */
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 13px;
+    background-color: #f7f7f7;
+    text-align: left;
+    margin-left: 16px; /* Add spacing between label and input */
+}
+   /* Add this to your existing CSS */
+p strong {
+    font-size: 15px; /* Adjust the size as needed */
+}
     </style>
 </head>
 <body>
@@ -337,6 +370,19 @@
         <p><strong>Total GMS Kosh Deposited Amount:</strong></p>
         <input type="text" id="totalGmsKoshAmount" readonly class="fixed-input" />
         <span class="note">(refer to bank statement for exact amount)</span>
+        
+        <!-- Add this below the "Total GMS Kosh Deposited Amount" section -->
+          <hr />
+          <p style="text-align: center; text-decoration: underline;"><strong>GMS Kosh Account Details</strong></p>
+          <p><strong>Bank Name:</strong>
+              <input type="text" id="bankName" value="Himalayan Bank Limited" readonly />
+          </p>
+          <p><strong>A/C Number:</strong>
+              <input type="text" id="bankAccountNumber" value="21254325340012" readonly />
+          </p>
+          <p><strong>Account Name:</strong>
+              <input type="text" id="accountName" value="Bindu/Anil Maharjan" readonly />
+          </p>
     </div>
 
     <!-- Footer -->
