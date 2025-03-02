@@ -283,22 +283,43 @@
             font-weight: bold; /* Bold text */
         }
         
-             #bankName,
-#bankAccountNumber,
-#accountName {
-    padding: 6px;
-    width: 52%; /* Adjust width as needed */
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    font-size: 13px;
-    background-color: #f7f7f7;
-    text-align: left;
-    margin-left: 16px; /* Add spacing between label and input */
-}
-   /* Add this to your existing CSS */
-p strong {
-    font-size: 15px; /* Adjust the size as needed */
-}
+        #bankName,
+        #bankAccountNumber,
+        #accountName {
+            padding: 6px;
+            width: 52%; /* Adjust width as needed */
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 13px;
+            background-color: #f7f7f7;
+            text-align: left;
+            margin-left: 16px; /* Add spacing between label and input */
+        }
+
+        /* Add this to your existing CSS */
+        p strong {
+            font-size: 15px; /* Adjust the size as needed */
+        }
+
+        /* Toggle Button Styles */
+        .toggle-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
+
+        .bank-details {
+            display: none; /* Initially hidden */
+        }
     </style>
 </head>
 <body>
@@ -371,18 +392,23 @@ p strong {
         <input type="text" id="totalGmsKoshAmount" readonly class="fixed-input" />
         <span class="note">(refer to bank statement for exact amount)</span>
         
-        <!-- Add this below the "Total GMS Kosh Deposited Amount" section -->
-          <hr />
-          <p style="text-align: center; text-decoration: underline;"><strong>GMS Kosh Bank A/C Details</strong></p>
-          <p><strong>Bank Name:</strong>
-              <input type="text" id="bankName" value="Himalayan Bank Limited" readonly />
-          </p>
-          <p><strong>A/C Number:</strong>
-              <input type="text" id="bankAccountNumber" value="21254325340012" readonly />
-          </p>
-          <p><strong>Account Name:</strong>
-              <input type="text" id="accountName" value="Bindu/Anil Maharjan" readonly />
-          </p>
+        <!-- Toggle Button for Bank Details -->
+        <button class="toggle-button" onclick="toggleBankDetails()">Show Bank A/C Details</button>
+
+        <!-- Bank Details Section -->
+        <div class="bank-details" id="bankDetails">
+            <hr />
+            <p style="text-align: center; text-decoration: underline;"><strong>GMS Kosh Bank A/C Details</strong></p>
+            <p><strong>Bank Name:</strong>
+                <input type="text" id="bankName" value="Himalayan Bank Limited" readonly />
+            </p>
+            <p><strong>A/C Number:</strong>
+                <input type="text" id="bankAccountNumber" value="21254325340012" readonly />
+            </p>
+            <p><strong>Account Name:</strong>
+                <input type="text" id="accountName" value="Bindu/Anil Maharjan" readonly />
+            </p>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -502,6 +528,20 @@ p strong {
         function setTotalGmsKoshAmount() {
             const gmsInput = document.getElementById('totalGmsKoshAmount');
             gmsInput.value = fixedGmsAmount;
+        }
+
+        // Toggle Bank Details Visibility
+        function toggleBankDetails() {
+            const bankDetails = document.getElementById('bankDetails');
+            const toggleButton = document.querySelector('.toggle-button');
+
+            if (bankDetails.style.display === 'none' || bankDetails.style.display === '') {
+                bankDetails.style.display = 'block';
+                toggleButton.textContent = 'Hide Bank A/C Details';
+            } else {
+                bankDetails.style.display = 'none';
+                toggleButton.textContent = 'Show Bank A/C Details';
+            }
         }
 
         // Display member details based on selection
