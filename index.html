@@ -84,7 +84,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease; /* Smooth transition for hiding/showing */
+            transition: all 0.3s ease;
         }
 
         .card input {
@@ -136,29 +136,26 @@
             color: inherit;
         }
 
-        /* Style for the "Total Deposit Till Now" input */
         #totalDeposit {
             color: blue;
             background-color: #e6f0ff;
             border: 1px solid blue;
         }
 
-        /* Style for the "Loan Amount Taken" input */
         #loanAmount {
             color: red;
             background-color: #ffe6e6;
             border: 1px solid red;
         }
 
-        /* Added for the "Total GMS Kosh Deposited Amount" field */
         .fixed-input {
             font-weight: bold;
-            color: #448EE4; /* Text color */
-            border: 1px solid #448EE4; /* Border color matching the text */
+            color: #448EE4;
+            border: 1px solid #448EE4;
             padding: 5px;
             font-size: 16px;
             width: 20%;
-            background-color: #e6f0ff; /* Light blue background to match the theme */
+            background-color: #e6f0ff;
             border-radius: 4px;
         }
 
@@ -207,7 +204,6 @@
             background-color: #0056b3;
         }
 
-        /* Overlay for popup */
         .overlay {
             position: fixed;
             top: 0;
@@ -219,7 +215,6 @@
             display: none;
         }
 
-        /* Footer Styles */
         footer {
             margin-top: 20px;
             text-align: center;
@@ -227,7 +222,6 @@
             color: #666;
         }
 
-        /* Responsive Styles */
         @media (max-width: 600px) {
             .card {
                 width: 90%;
@@ -247,61 +241,56 @@
             }
         }
 
-        /* Custom Styles for Loan Taken Date and Loan Maturity Date */
         #loanTakenDate {
-            color: purple; /* Text color */
-            background-color: #f3e5f5; /* Light purple background */
-            border: 1px solid purple; /* Purple border */
+            color: purple;
+            background-color: #f3e5f5;
+            border: 1px solid purple;
         }
 
         #loanMaturityDate {
-            color: orange; /* Text color */
-            background-color: #fff3e0; /* Light orange background */
-            border: 1px solid orange; /* Orange border */
+            color: orange;
+            background-color: #fff3e0;
+            border: 1px solid orange;
         }
 
-        /* Style for Loan Cleared Date */
         #loanClearedDate {
-            color: purple; /* Text color */
-            background-color: #FFB6C1; /* Pink background */
-            border: 1px solid #ff69b4; /* Border color */
+            color: purple;
+            background-color: #FFB6C1;
+            border: 1px solid #ff69b4;
         }
         
-        /* Add this to your existing CSS */
         #bankName {
-            color: blue; /* Blue text color */
-            font-weight: bold; /* Bold text */
+            color: blue;
+            font-weight: bold;
         }
         
         #bankAccountNumber {
-            color: purple; /* Orange text color */
-            font-weight: bold; /* Bold text */
+            color: purple;
+            font-weight: bold;
         }
         
         #accountName {
-            color: green; /* Green text color */
-            font-weight: bold; /* Bold text */
+            color: green;
+            font-weight: bold;
         }
         
         #bankName,
         #bankAccountNumber,
         #accountName {
             padding: 6px;
-            width: 52%; /* Adjust width as needed */
+            width: 52%;
             border: 1px solid #ddd;
             border-radius: 3px;
             font-size: 13px;
             background-color: #f7f7f7;
             text-align: left;
-            margin-left: 16px; /* Add spacing between label and input */
+            margin-left: 16px;
         }
 
-        /* Add this to your existing CSS */
         p strong {
-            font-size: 15px; /* Adjust the size as needed */
+            font-size: 15px;
         }
 
-        /* Toggle Button Styles */
         .toggle-button {
             background-color: #007bff;
             color: white;
@@ -318,7 +307,81 @@
         }
 
         .bank-details {
-            display: none; /* Initially hidden */
+            display: none;
+        }
+
+        /* Kosh Balance Details Styles */
+        .kosh-balance-details {
+            display: none;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .kosh-balance-details p {
+            margin: 8px 0;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .kosh-balance-details input {
+            padding: 6px;
+            width: 100px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f7f7f7;
+            text-align: right;
+            box-sizing: border-box;
+        }
+
+        .kosh-balance-title {
+            text-align: center;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .kosh-balance-details .total-balance {
+            font-weight: bold;
+            color: green;
+            border: 1px solid green;
+            background-color: #e6ffe6;
+        }
+
+        .kosh-balance-details .total-loan {
+            color: red;
+            border: 1px solid red;
+            background-color: #ffe6e6;
+        }
+
+        .kosh-balance-details .total-deposit {
+            color: blue;
+            border: 1px solid blue;
+            background-color: #e6f0ff;
+              font-weight: bold;
+        }
+
+        .kosh-balance-details .remaining-balance {
+            color: #ff69b4;
+            border: 1px solid #ff69b4;
+            background-color: #ffebf2;
+            font-weight: bold;
+        }
+        #totalLoanInstallmentPaid {
+            color: orange;
+            border: 1px solid orange; /* Added for consistency with the new color */
+            background-color: #fff3e0; /* A light orange background */
+            font-weight: bold;
+        }
+        #totalLoanInterestBalance {
+            color: #3898B2;
+            border: 1px solid cyan; /* Added for consistency */
+            background-color: #e0ffff; /* A light cyan background */
+            font-weight: bold;
         }
     </style>
 </head>
@@ -388,14 +451,38 @@
             <input type="text" id="loanClearedDate" readonly />
         </p>
         <hr />
-        <p><strong>Total GMS Kosh Deposited Amount:</strong></p>
-        <input type="text" id="totalGmsKoshAmount" readonly class="fixed-input" />
-        <span class="note">(refer to bank statement for exact amount)</span>
-        
-        <!-- Toggle Button for Bank Details -->
-        <button class="toggle-button" onclick="toggleBankDetails()">Show Bank A/C Details</button>
+
+        <!-- Kosh Balance Details Section -->
+        <button class="toggle-button" onclick="toggleKoshBalanceDetails()">Show Kosh Balance Details</button>
+        <div class="kosh-balance-details" id="koshBalanceDetails">
+                    <hr />
+
+            <div class="kosh-balance-title">GMS Kosh Balance Details</div>
+            <p><strong>Total GMS Kosh Deposited Amount:</strong>
+                <input type="text" id="totalGmsKoshDeposit" value="Rs. 211350" readonly class="total-deposit" />
+            </p>
+            <p><strong>Total Loan Amount:</strong>
+                <input type="text" id="totalLoanAmount" value="Rs. 150000" readonly class="total-loan" />
+            </p>
+            <p><strong>Total Balance After Loan:</strong>
+                <input type="text" id="totalBalanceAfterLoan" value="Rs. 61350" readonly class="total-balance" />
+            </p>
+            <p><strong>Total Loan Installment Paid:</strong>
+                <input type="text" id="totalLoanInstallmentPaid" value="Rs. 8500" readonly />
+            </p>
+            <p><strong>Total Loan Interest Balance:</strong>
+                <input type="text" id="totalLoanInterestBalance" value="Rs. 15966" readonly />
+            </p>
+              <hr />
+            <p><strong>Total Remaining Balance:</strong>
+                <input type="text" id="totalRemainingBalance" value="Rs. 85816" readonly class="remaining-balance" />
+            </p>
+            <hr />
+        </div>
 
         <!-- Bank Details Section -->
+        <button class="toggle-button" onclick="toggleBankDetails()">Show Bank A/C Details</button>
+
         <div class="bank-details" id="bankDetails">
             <hr />
             <p style="text-align: center; text-decoration: underline;"><strong>GMS Kosh Bank A/C Details</strong></p>
@@ -439,12 +526,12 @@
                 dob: '11-30-1990',
                 joinedDate: '2079 Bhadra',
                 totalDeposit: 'Rs. 35000',
-                loanAmount:'N/A', /* Rs. 100000 */
-                loanInstallment: 'N/A', /* Rs. 100000 */
-                loanInterest: 'N/A', /* Rs. 5666 */
-                loanTakenDate: 'N/A', /* 9th Bhadra 2081 */
-                loanMaturityDate: 'N/A', /* 9th Bhadra 2082 */
-                loanClearedDate: 'N/A' /* 30th Magh 2081 */
+                loanAmount:'N/A',
+                loanInstallment: 'N/A',
+                loanInterest: 'N/A',
+                loanTakenDate: 'N/A',
+                loanMaturityDate: 'N/A',
+                loanClearedDate: 'N/A'
             },
             'Sajina Barahi': {
                 name: 'Sajina Barahi',
@@ -453,13 +540,13 @@
                 email: 'N/A',
                 dob: 'N/A',
                 joinedDate: '2079 Bhadra',
-                totalDeposit: 'Rs. 35000', /* Rs. 33000 */
-                loanAmount: 'Rs. 50000',  /* Rs. 50000 */
-                loanInstallment: 'Rs. 8500',  /* Rs. 50000 */
-                loanInterest: 'Rs. 1000',  /* Rs. 3000 */
-                loanTakenDate: '1st Chaitra 2081',  /* 17th Bhadra 2081 */ 
-                loanMaturityDate: '1st Ashwin 2082',  /* 17th Falgun 2081 */
-                loanClearedDate: 'N/A' /* 15th Falgun 2081 */
+                totalDeposit: 'Rs. 35000',
+                loanAmount: 'Rs. 50000',
+                loanInstallment: 'Rs. 8500',
+                loanInterest: 'Rs. 1000',
+                loanTakenDate: '1st Chaitra 2081',
+                loanMaturityDate: '1st Ashwin 2082',
+                loanClearedDate: 'N/A'
             },
             'Bindu Maharjan': {
                 name: 'Bindu Maharjan',
@@ -474,7 +561,7 @@
                 loanInterest: 'N/A',
                 loanTakenDate: '8th Jestha 2082',
                 loanMaturityDate: 'N/A',
-                loanClearedDate: 'N/A' // New field
+                loanClearedDate: 'N/A'
             },
             'Manisha Maharjan': {
                 name: 'Manisha Maharjan',
@@ -489,7 +576,7 @@
                 loanInterest: 'N/A',
                 loanTakenDate: 'N/A',
                 loanMaturityDate: 'N/A',
-                loanClearedDate: 'N/A' // New field
+                loanClearedDate: 'N/A'
             },
             'Rajeev Maharjan': {
                 name: 'Rajeev Maharjan',
@@ -504,7 +591,7 @@
                 loanInterest: 'N/A',
                 loanTakenDate: 'N/A',
                 loanMaturityDate: 'N/A',
-                loanClearedDate: 'N/A' // New field
+                loanClearedDate: 'N/A'
             },
             'Supreme Chitrakar': {
                 name: 'Supreme Chitrakar',
@@ -519,21 +606,28 @@
                 loanInterest: 'N/A',
                 loanTakenDate: 'N/A',
                 loanMaturityDate: 'N/A',
-                loanClearedDate: 'N/A' // New field
+                loanClearedDate: 'N/A'
             }
         };
 
-        // Set Total GMS Kosh Deposited Amount for all members to the same value
-        const fixedGmsAmount = 'Rs. 85816';  /* Rs. 178316 */ /* Rs. 165316 */ /* Rs. 214316 */
-        function setTotalGmsKoshAmount() {
-            const gmsInput = document.getElementById('totalGmsKoshAmount');
-            gmsInput.value = fixedGmsAmount;
+        // Toggle Kosh Balance Details Visibility
+        function toggleKoshBalanceDetails() {
+            const koshBalanceDetails = document.getElementById('koshBalanceDetails');
+            const toggleButton = document.querySelectorAll('.toggle-button')[0];
+
+            if (koshBalanceDetails.style.display === 'none' || koshBalanceDetails.style.display === '') {
+                koshBalanceDetails.style.display = 'block';
+                toggleButton.textContent = 'Hide Kosh Balance Details';
+            } else {
+                koshBalanceDetails.style.display = 'none';
+                toggleButton.textContent = 'Show Kosh Balance Details';
+            }
         }
 
         // Toggle Bank Details Visibility
         function toggleBankDetails() {
             const bankDetails = document.getElementById('bankDetails');
-            const toggleButton = document.querySelector('.toggle-button');
+            const toggleButton = document.querySelectorAll('.toggle-button')[1];
 
             if (bankDetails.style.display === 'none' || bankDetails.style.display === '') {
                 bankDetails.style.display = 'block';
@@ -550,11 +644,8 @@
             const memberName = memberSelect.value;
             const memberDetails = document.getElementById('memberDetails');
 
-            
-            
             if (memberName) {
                 const member = memberInfo[memberName];
-            
 
                 // Update member-specific details
                 document.getElementById('name').innerText = member.name;
@@ -571,7 +662,7 @@
                 const loanInterest = document.getElementById('loanInterest');
                 const loanTakenDate = document.getElementById('loanTakenDate');
                 const loanMaturityDate = document.getElementById('loanMaturityDate');
-                const loanClearedDate = document.getElementById('loanClearedDate'); // New field
+                const loanClearedDate = document.getElementById('loanClearedDate');
 
                 // Check if loan-related fields are N/A and hide them
                 if (member.loanAmount === 'N/A') {
@@ -609,16 +700,12 @@
                     loanMaturityDate.parentElement.style.display = 'flex';
                 }
 
-                // Handle Loan Cleared Date
                 if (member.loanClearedDate === 'N/A') {
                     loanClearedDate.parentElement.style.display = 'none';
                 } else {
                     loanClearedDate.value = member.loanClearedDate;
                     loanClearedDate.parentElement.style.display = 'flex';
                 }
-
-                // Set Total GMS Kosh Deposited Amount for all members
-                setTotalGmsKoshAmount();
 
                 // Show the member details section
                 memberDetails.style.display = 'block';
@@ -627,9 +714,6 @@
                 memberDetails.style.display = 'none';
             }
         }
-
-        // Call this function when the page loads or when you want to set the value
-        setTotalGmsKoshAmount();
     </script>
 </body>
 </html>
